@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huaqi.demo.dao.ProjectDao">
+    <resultMap id="BaseMap" type="ProjectEntity">
+        <id column="id" property="id"></id>
+        <id column="project_name" property="projectName" ></id>
+        <id column="justification" property="justification" ></id>
+        <id column="positions" property="positions" ></id>
+        <id column="project_leader" property="projectLeader"></id>
+        <id column="unit1" property="unit1"></id>
+        <id column="team1" property="team1"></id>
+        <id column="project_member2" property="projectMember2"></id>
+        <id column="unit2" property="unit2"></id>
+        <id column="team2" property="team2"></id>
+        <id column="project_member3" property="projectMember3"></id>
+        <id column="unit3" property="unit3"></id>
+        <id column="team3" property="team3"></id>
+        <id column="project_member4" property="projectMember4"></id>
+        <id column="unit4" property="unit4"></id>
+        <id column="team4" property="team4"></id>
+        <id column="project_member5" property="projectMember5"></id>
+        <id column="unit5" property="unit5"></id>
+        <id column="team5" property="team5"></id>
+
+    </resultMap>
+
+
+
+    <insert id="create" parameterType="ProjectEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into project
+        (project_name,justification,positions,project_leader,unit1,team1,project_member2,unit2,team2,project_member3,unit3,team3,project_member4,unit4,team4,project_member5,unit5,team5)
+        values
+        (#{projectName},#{justification},#{positions},#{projectLeader},#{unit1},#{team1},#{projectMember2},#{unit2},#{team2},#{projectMember3},#{unit3},#{team3},#{projectMember4},#{unit4},#{team4},#{projectMember5},#{unit5},#{team5})
+    </insert>
+    <select id="getProjectById" resultMap="BaseMap" parameterType="Integer">
+        select * from project where id= #{id}
+    </select>
+    <select id="findAll" resultMap="BaseMap">
+        select * from project
+    </select>
+    <update id="update" parameterType="ProjectEntity">
+        update project set project_name=#{projectName},justification=#{justification},positions=#{positions},project_leader=#{projectLeader},unit1=#{unit1},team1=#{team1},project_member2=#{projectMember2},unit2=#{unit2},team2=#{team2},project_member3=#{projectMember3},unit3=#{unit3},team3=#{team3},project_member4=#{projectMember4},unit4=#{unit4},team4=#{team4},project_member5=#{projectMember5},unit5=#{unit5},team5=#{team5}
+        where id=#{id}
+    </update>
+    <delete id="delete" parameterType="Integer">
+        delete from project where id=#{id}
+    </delete>
+</mapper>
